@@ -42,6 +42,12 @@ npm start        # Expo dev server; press i / a, or scan with Expo Go
 
 ## Project conventions
 
+- Naming: the product name is **SpendWise AI** everywhere a person reads it
+  (app display name, README, docs, UI strings). Machine identifiers — npm
+  package name, Expo slug, repo/folder — use `spendwise-ai`, since npm and
+  Expo identifiers cannot contain spaces or uppercase, and keeping them stable
+  avoids breaking installs, deep links, and future EAS project bindings over a
+  cosmetic rename.
 - User-visible text lives in `src/shared/resources/strings.ts`; accessibility
   labels/hints in `src/shared/resources/accessibility.ts`. No copy hardcoded in
   components.
