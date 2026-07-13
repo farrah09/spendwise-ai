@@ -8,6 +8,33 @@ export const strings = {
     appName: 'SpendWise AI',
     currencyCode: 'SAR',
     comingSoon: 'Coming soon',
+    loading: 'Loading…',
+  },
+  widgets: {
+    balance: {
+      label: 'Total balance',
+    },
+    budget: {
+      progress: (spent: string, limit: string) => `${spent} of ${limit}`,
+      overBudget: 'Over budget',
+    },
+    insight: {
+      badge: 'AI insight',
+    },
+    transaction: {
+      subtitle: (category: string, date: string) => `${category} · ${date}`,
+    },
+  },
+  gallery: {
+    title: 'Design system',
+    open: 'Open component gallery',
+    sections: {
+      typography: 'Typography',
+      buttons: 'Buttons',
+      badges: 'Status badges',
+      states: 'States',
+      fintech: 'Fintech components',
+    },
   },
   tabs: {
     home: 'Home',

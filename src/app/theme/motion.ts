@@ -18,4 +18,9 @@ export const motion = {
     decelerate: Easing.out(Easing.cubic),
     accelerate: Easing.in(Easing.cubic),
   },
+  scale: {
+    pressed: 0.97,
+  },
+  /** Entrance slide distance, matched to the spacing scale. */
+  entranceOffset: 12,
 } as const;

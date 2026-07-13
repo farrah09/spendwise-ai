@@ -1,20 +1,17 @@
 import { StyleSheet, View } from 'react-native';
 
 import { useTheme } from '../../app/theme';
-import { strings } from '../resources/strings';
 import { AppText } from './AppText';
-import { StatusBadge } from './StatusBadge';
+import { SecondaryButton } from './SecondaryButton';
 
-interface PlaceholderViewProps {
+interface EmptyStateProps {
   title: string;
   body: string;
+  actionLabel?: string;
+  onAction?: () => void;
 }
 
-/**
- * Temporary empty-state used while screens are skeletons. Replaced as
- * real widgets land (see docs/roadmap.md).
- */
-export function PlaceholderView({ title, body }: PlaceholderViewProps) {
+export function EmptyState({ title, body, actionLabel, onAction }: EmptyStateProps) {
   const theme = useTheme();
 
   return (
@@ -23,9 +20,11 @@ export function PlaceholderView({ title, body }: PlaceholderViewProps) {
       <AppText color="secondary" style={styles.body}>
         {body}
       </AppText>
-      <View style={{ marginTop: theme.spacing.md }}>
-        <StatusBadge label={strings.common.comingSoon} />
-      </View>
+      {actionLabel && onAction ? (
+        <View style={{ marginTop: theme.spacing.md }}>
+          <SecondaryButton label={actionLabel} onPress={onAction} />
+        </View>
+      ) : null}
     </View>
   );
 }

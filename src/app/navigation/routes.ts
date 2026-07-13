@@ -9,4 +9,6 @@ export const Routes = {
   Transactions: 'Transactions',
   Analytics: 'Analytics',
   Settings: 'Settings',
+  /** Dev-only component gallery; registered only when __DEV__. */
+  Gallery: 'Gallery',
 } as const;
