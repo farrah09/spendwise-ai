@@ -5,7 +5,7 @@
 
 ## Context
 
-SpendWise is a portfolio-grade fintech expense tracker (React Native +
+SpendWise AI is a portfolio-grade fintech expense tracker (React Native +
 TypeScript, SAR currency, AI-assisted categorization/insights planned). It
 needs to read like a production codebase: clear module boundaries, themable
 UI, localizable copy, and small reviewable commits. No custom native modules

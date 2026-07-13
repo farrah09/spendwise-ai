@@ -5,7 +5,7 @@
  */
 export const strings = {
   common: {
-    appName: 'SpendWise',
+    appName: 'SpendWise AI',
     currencyCode: 'SAR',
     comingSoon: 'Coming soon',
   },

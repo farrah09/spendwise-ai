@@ -1,6 +1,6 @@
 # Architecture
 
-SpendWise uses a pragmatic Feature-Sliced structure. Layers are ordered by
+SpendWise AI uses a pragmatic Feature-Sliced structure. Layers are ordered by
 how much they know about the product; imports flow **downward only**.
 
 ```

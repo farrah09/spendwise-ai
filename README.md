@@ -1,7 +1,6 @@
-# SpendWise
+# SpendWise AI
 
-Expense tracker for SAR, built with React Native (Expo) and TypeScript.
-SpendWise includes AI-powered category suggestions and spending insights.
+AI-powered expense tracker for SAR, built with React Native (Expo) and TypeScript.
 
 > **Status:** early scaffold. Navigation skeleton, theme foundation, and project
 > structure are in place; features land commit by commit (see

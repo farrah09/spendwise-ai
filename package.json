@@ -1,5 +1,5 @@
 {
-  "name": "spendwise",
+  "name": "spendwise-ai",
   "version": "0.1.0",
   "main": "index.ts",
   "dependencies": {
