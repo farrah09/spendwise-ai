@@ -7,12 +7,17 @@ interface SectionHeaderProps {
   title: string;
   actionLabel?: string;
   onActionPress?: () => void;
+  /** Screen-reader label when the visible action label lacks context. */
+  actionAccessibilityLabel?: string;
+  actionAccessibilityHint?: string;
 }
 
 export function SectionHeader({
   title,
   actionLabel,
   onActionPress,
+  actionAccessibilityLabel,
+  actionAccessibilityHint,
 }: SectionHeaderProps) {
   const theme = useTheme();
 
@@ -25,7 +30,12 @@ export function SectionHeader({
     >
       <AppText variant="bodyStrong">{title}</AppText>
       {actionLabel && onActionPress ? (
-        <Pressable onPress={onActionPress} accessibilityRole="button">
+        <Pressable
+          onPress={onActionPress}
+          accessibilityRole="button"
+          accessibilityLabel={actionAccessibilityLabel ?? actionLabel}
+          accessibilityHint={actionAccessibilityHint}
+        >
           <AppText variant="label" color="accent">
             {actionLabel}
           </AppText>

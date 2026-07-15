@@ -68,13 +68,18 @@ Props-driven presentation blocks with no data fetching or business logic:
 Animations must support **usability, state change, or feedback** — decorative
 motion is rejected. Foundations live in `src/shared/ui/animations.ts`:
 
-- `useEntranceAnimation` — fade + slide-up for content arriving on screen
+- `useEntranceAnimation` — fade + slide-up for content arriving on screen;
+  stagger siblings with `index * motion.stagger` (see the Home dashboard)
 - `usePressFeedback` — subtle scale confirming a touch registered (built into
   buttons and pressable cards)
+- `useCountUp` — counts a number up on arrival (balance amounts). Display
+  only: accessibility labels must carry the final value
+- `useProgressAnimation` — animates a progress bar fill to its ratio
+  (budget cards)
 
-Both consume `motion` tokens; ad-hoc durations/easings are not allowed. Heavier
-animations (count-up, shimmer, progress) land with their features per
-`docs/roadmap.md`.
+All consume `motion` tokens; ad-hoc durations/easings are not allowed.
+Shimmer/skeleton loading lands when a section actually loads independently
+(real AI insight fetch) per `docs/roadmap.md`.
 
 ## Component gallery (dev only)
 

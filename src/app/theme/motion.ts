@@ -12,6 +12,8 @@ export const motion = {
     fast: 150,
     base: 250,
     slow: 400,
+    /** Number count-ups and other value reveals. */
+    slower: 700,
   },
   easing: {
     standard: Easing.bezier(0.2, 0, 0, 1),
@@ -23,4 +25,6 @@ export const motion = {
   },
   /** Entrance slide distance, matched to the spacing scale. */
   entranceOffset: 12,
+  /** Delay step between staggered sibling entrances (index * stagger). */
+  stagger: 70,
 } as const;

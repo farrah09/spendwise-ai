@@ -9,4 +9,9 @@ export { LoadingState } from './LoadingState';
 export { SectionHeader } from './SectionHeader';
 export { StatusBadge } from './StatusBadge';
 export { PlaceholderView } from './PlaceholderView';
-export { useEntranceAnimation, usePressFeedback } from './animations';
+export {
+  useCountUp,
+  useEntranceAnimation,
+  usePressFeedback,
+  useProgressAnimation,
+} from './animations';

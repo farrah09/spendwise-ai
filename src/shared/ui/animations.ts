@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Animated } from 'react-native';
 
 import { useTheme } from '../../app/theme';
@@ -55,4 +55,56 @@ export function usePressFeedback() {
     onPressIn: () => animateTo(theme.motion.scale.pressed),
     onPressOut: () => animateTo(1),
   };
+}
+
+/**
+ * Counts a number up from zero to `target` on mount (and when the target
+ * changes). Communicates "this value just arrived". The returned number is
+ * for display only — accessibility labels must use the final target so
+ * screen readers never announce mid-animation values.
+ */
+export function useCountUp(target: number) {
+  const theme = useTheme();
+  const progress = useRef(new Animated.Value(0)).current;
+  const [display, setDisplay] = useState(0);
+
+  useEffect(() => {
+    const listener = progress.addListener(({ value }) =>
+      setDisplay(value * target),
+    );
+    progress.setValue(0);
+    Animated.timing(progress, {
+      toValue: 1,
+      duration: theme.motion.duration.slower,
+      easing: theme.motion.easing.decelerate,
+      useNativeDriver: false, // drives a rendered text value, not a transform
+    }).start(() => setDisplay(target));
+    return () => progress.removeListener(listener);
+  }, [progress, target, theme.motion]);
+
+  return display;
+}
+
+/**
+ * Animates a progress bar fill from empty to `ratio` (0–1, caller clamps).
+ * Communicates the state change of "this much is used". Returns a width
+ * value for an Animated.View inside a fixed-height track.
+ */
+export function useProgressAnimation(ratio: number) {
+  const theme = useTheme();
+  const progress = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    Animated.timing(progress, {
+      toValue: ratio,
+      duration: theme.motion.duration.slow,
+      easing: theme.motion.easing.decelerate,
+      useNativeDriver: false, // animates layout width
+    }).start();
+  }, [progress, ratio, theme.motion]);
+
+  return progress.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['0%', '100%'],
+  });
 }

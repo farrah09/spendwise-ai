@@ -4,7 +4,7 @@ import { useTheme } from '../../app/theme';
 import { formatSar } from '../../shared/lib/formatCurrency';
 import { a11y } from '../../shared/resources/accessibility';
 import { strings } from '../../shared/resources/strings';
-import { AmountText, AppCard, AppText } from '../../shared/ui';
+import { AmountText, AppCard, AppText, useCountUp } from '../../shared/ui';
 
 interface BalanceCardProps {
   balance: number;
@@ -12,6 +12,8 @@ interface BalanceCardProps {
 
 export function BalanceCard({ balance }: BalanceCardProps) {
   const theme = useTheme();
+  // Visible amount counts up; the accessibility label keeps the final value.
+  const animatedBalance = useCountUp(balance);
 
   return (
     <AppCard>
@@ -23,7 +25,7 @@ export function BalanceCard({ balance }: BalanceCardProps) {
         <AppText variant="label" color="secondary">
           {strings.widgets.balance.label}
         </AppText>
-        <AmountText amount={balance} variant="display" />
+        <AmountText amount={animatedBalance} variant="display" />
       </View>
     </AppCard>
   );

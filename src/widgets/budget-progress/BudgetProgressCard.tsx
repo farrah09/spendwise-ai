@@ -1,10 +1,15 @@
-import { StyleSheet, View } from 'react-native';
+import { Animated, StyleSheet, View } from 'react-native';
 
 import { useTheme } from '../../app/theme';
 import { formatSar } from '../../shared/lib/formatCurrency';
 import { a11y } from '../../shared/resources/accessibility';
 import { strings } from '../../shared/resources/strings';
-import { AppCard, AppText, StatusBadge } from '../../shared/ui';
+import {
+  AppCard,
+  AppText,
+  StatusBadge,
+  useProgressAnimation,
+} from '../../shared/ui';
 
 interface BudgetProgressCardProps {
   category: string;
@@ -21,6 +26,7 @@ export function BudgetProgressCard({
   const ratio = limit > 0 ? spent / limit : 0;
   const isOver = ratio > 1;
   const barRatio = Math.min(Math.max(ratio, 0), 1);
+  const animatedWidth = useProgressAnimation(barRatio);
 
   return (
     <AppCard>
@@ -48,9 +54,9 @@ export function BudgetProgressCard({
             },
           ]}
         >
-          <View
+          <Animated.View
             style={{
-              width: `${barRatio * 100}%`,
+              width: animatedWidth,
               height: '100%',
               borderRadius: theme.radius.pill,
               backgroundColor: isOver ? theme.colors.danger : theme.colors.primary,

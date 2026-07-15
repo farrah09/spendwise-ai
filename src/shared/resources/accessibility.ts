@@ -16,6 +16,30 @@ export const a11y = {
     analytics: { label: 'Analytics tab' },
     settings: { label: 'Settings tab' },
   },
+  home: {
+    spentThisMonth: {
+      label: (amount: string) => `Spent this month ${amount}`,
+    },
+    incomeThisMonth: {
+      label: (amount: string) => `Income this month ${amount}`,
+    },
+    seeAllTransactions: {
+      label: 'See all transactions',
+      hint: 'Opens the Transactions tab',
+    },
+    addExpense: {
+      label: 'Add expense',
+      hint: 'Expense entry is coming soon',
+    },
+    viewAnalytics: {
+      label: 'View analytics',
+      hint: 'Opens the Analytics tab',
+    },
+    viewTransactions: {
+      label: 'View transactions',
+      hint: 'Opens the Transactions tab',
+    },
+  },
   widgets: {
     balance: {
       label: (amount: string) => `Total balance ${amount}`,

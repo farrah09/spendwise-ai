@@ -49,9 +49,34 @@ export const strings = {
     getStarted: 'Get started',
   },
   home: {
-    placeholderTitle: 'Your money at a glance',
-    placeholderBody:
-      'Balance, recent spending, and budget health will appear here.',
+    greetingMorning: 'Good morning',
+    greetingAfternoon: 'Good afternoon',
+    greetingEvening: 'Good evening',
+    subtitle: 'Here’s where your money stands.',
+    demoBadge: 'Demo data',
+    spentThisMonth: 'Spent this month',
+    incomeThisMonth: 'Income this month',
+    sections: {
+      budgets: 'Budgets',
+      recentTransactions: 'Recent transactions',
+    },
+    seeAll: 'See all',
+    quickActions: {
+      addExpense: 'Add expense',
+      viewAnalytics: 'View analytics',
+      viewTransactions: 'View transactions',
+    },
+    addExpenseSoon:
+      'Fast expense entry with AI category suggestions lands in the next update.',
+    empty: {
+      title: 'No activity yet',
+      body: 'Your balance, budgets, and AI insights appear once your first expenses are in.',
+    },
+    error: {
+      title: 'Couldn’t load your dashboard',
+      body: 'Something went wrong while loading your money overview.',
+      retry: 'Try again',
+    },
   },
   transactions: {
     placeholderTitle: 'Every expense, in order',
