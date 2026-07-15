@@ -6,6 +6,8 @@ import {
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { useTheme } from '../theme';
+import { strings } from '../../shared/resources/strings';
+import { GalleryScreen } from '../../pages/gallery/GalleryScreen';
 import { OnboardingScreen } from '../../pages/onboarding/OnboardingScreen';
 import { MainTabNavigator } from './MainTabNavigator';
 import { Routes } from './routes';
@@ -33,6 +35,19 @@ export function RootNavigator() {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name={Routes.Onboarding} component={OnboardingScreen} />
         <Stack.Screen name={Routes.MainTabs} component={MainTabNavigator} />
+        {__DEV__ ? (
+          <Stack.Screen
+            name={Routes.Gallery}
+            component={GalleryScreen}
+            options={{
+              headerShown: true,
+              title: strings.gallery.title,
+              headerStyle: { backgroundColor: theme.colors.background },
+              headerTintColor: theme.colors.textPrimary,
+              headerShadowVisible: false,
+            }}
+          />
+        ) : null}
       </Stack.Navigator>
     </NavigationContainer>
   );

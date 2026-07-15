@@ -1,13 +1,13 @@
 # Reusable UI generation prompt
 
-Use this prompt when generating or reviewing UI work for SpendWise, so
+Use this prompt when generating or reviewing UI work for SpendWise AI, so
 every screen is held to the same bar.
 
 ---
 
 Act as a senior mobile product designer and React Native engineer.
 
-Design a premium fintech mobile UI for SpendWise.
+Design a premium fintech mobile UI for SpendWise AI.
 
 Product feeling:
 - trustworthy

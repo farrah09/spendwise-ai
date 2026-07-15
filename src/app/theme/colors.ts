@@ -7,10 +7,14 @@ export interface ThemeColors {
   border: string;
   primary: string;
   primaryPressed: string;
+  primarySoft: string;
   onPrimary: string;
   success: string;
+  successSoft: string;
   warning: string;
+  warningSoft: string;
   danger: string;
+  dangerSoft: string;
 }
 
 export const lightColors: ThemeColors = {
@@ -22,10 +26,14 @@ export const lightColors: ThemeColors = {
   border: '#E2E8F0',
   primary: '#0E7A5F',
   primaryPressed: '#0A5C47',
+  primarySoft: '#E4F2ED',
   onPrimary: '#FFFFFF',
   success: '#16A34A',
+  successSoft: '#E6F6EC',
   warning: '#D97706',
+  warningSoft: '#FBF0DD',
   danger: '#DC2626',
+  dangerSoft: '#FCE9E9',
 };
 
 export const darkColors: ThemeColors = {
@@ -37,8 +45,12 @@ export const darkColors: ThemeColors = {
   border: '#273240',
   primary: '#2FBF9A',
   primaryPressed: '#57CFAF',
+  primarySoft: '#123229',
   onPrimary: '#06281F',
   success: '#4ADE80',
+  successSoft: '#12351F',
   warning: '#FBBF24',
+  warningSoft: '#382D12',
   danger: '#F87171',
+  dangerSoft: '#3A1919',
 };

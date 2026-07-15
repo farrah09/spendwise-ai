@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "SpendWise",
-    "slug": "spendwise",
+    "name": "SpendWise AI",
+    "slug": "spendwise-ai",
     "version": "0.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

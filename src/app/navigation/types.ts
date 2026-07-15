@@ -10,4 +10,6 @@ export type MainTabParamList = {
 export type RootStackParamList = {
   Onboarding: undefined;
   MainTabs: NavigatorScreenParams<MainTabParamList>;
+  /** Dev-only component gallery; registered only when __DEV__. */
+  Gallery: undefined;
 };
