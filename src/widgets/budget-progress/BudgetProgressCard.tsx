@@ -1,6 +1,7 @@
 import { Animated, StyleSheet, View } from 'react-native';
 
 import { useTheme } from '../../app/theme';
+import { budgetProgress } from '../../entities/budget';
 import { formatSar } from '../../shared/lib/formatCurrency';
 import { a11y } from '../../shared/resources/accessibility';
 import { strings } from '../../shared/resources/strings';
@@ -23,9 +24,7 @@ export function BudgetProgressCard({
   limit,
 }: BudgetProgressCardProps) {
   const theme = useTheme();
-  const ratio = limit > 0 ? spent / limit : 0;
-  const isOver = ratio > 1;
-  const barRatio = Math.min(Math.max(ratio, 0), 1);
+  const { barRatio, isOver } = budgetProgress(spent, limit);
   const animatedWidth = useProgressAnimation(barRatio);
 
   return (

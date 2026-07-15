@@ -10,6 +10,20 @@ export const strings = {
     comingSoon: 'Coming soon',
     loading: 'Loading…',
   },
+  dates: {
+    today: 'Today',
+    yesterday: 'Yesterday',
+  },
+  categories: {
+    salary: 'Salary',
+    groceries: 'Groceries',
+    transport: 'Transport',
+    coffee: 'Coffee',
+    pharmacy: 'Pharmacy',
+    subscriptions: 'Subscriptions',
+    shopping: 'Shopping',
+    utilities: 'Utilities',
+  },
   widgets: {
     balance: {
       label: 'Total balance',
@@ -56,6 +70,7 @@ export const strings = {
     demoBadge: 'Demo data',
     spentThisMonth: 'Spent this month',
     incomeThisMonth: 'Income this month',
+    percentOfIncome: (percent: number) => `${percent}% of income`,
     sections: {
       budgets: 'Budgets',
       recentTransactions: 'Recent transactions',

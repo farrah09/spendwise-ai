@@ -1,11 +1,21 @@
 import { useCallback, useEffect, useState } from 'react';
 
+import {
+  monthlyExpenses,
+  monthlyIncome,
+  recentTransactions,
+  remainingBalance,
+  signedAmount,
+  spendingPercentage,
+  spentByCategory,
+} from '../../../entities/transaction';
+import { formatDateLabel } from '../../../shared/lib/formatDateLabel';
 import { strings } from '../../../shared/resources/strings';
 import {
-  fetchDemoDashboard,
-  type DashboardData,
+  fetchHomeDashboard,
   type DashboardScenario,
-} from './demoDashboardData';
+  type HomeDashboardData,
+} from './homeDashboardService';
 
 export type DashboardStatus = 'loading' | 'success' | 'empty' | 'error';
 
@@ -23,17 +33,18 @@ function greetingForHour(hour: number): string {
 }
 
 /**
- * Home dashboard view model: owns load state and every derived number so
- * the screen only lays things out. Pass a `scenario` ('empty' | 'error')
- * to preview those states while data is still demo-only.
+ * Home dashboard view model: owns load state and derives every displayed
+ * number through entities/transaction calculations, so the screen only
+ * lays things out. Pass a `scenario` ('empty' | 'error') to preview those
+ * states while data is still demo-only.
  */
 export function useHomeDashboard(scenario: DashboardScenario = 'success') {
   const [status, setStatus] = useState<DashboardStatus>('loading');
-  const [data, setData] = useState<DashboardData | null>(null);
+  const [data, setData] = useState<HomeDashboardData | null>(null);
 
   const load = useCallback(() => {
     setStatus('loading');
-    fetchDemoDashboard(scenario)
+    fetchHomeDashboard(scenario)
       .then((result) => {
         setData(result);
         setStatus(result ? 'success' : 'empty');
@@ -44,22 +55,31 @@ export function useHomeDashboard(scenario: DashboardScenario = 'success') {
   useEffect(load, [load]);
 
   const transactions = data?.transactions ?? [];
-  const spentThisMonth = transactions
-    .filter((transaction) => transaction.amount < 0)
-    .reduce((total, transaction) => total - transaction.amount, 0);
-  const incomeThisMonth = transactions
-    .filter((transaction) => transaction.amount > 0)
-    .reduce((total, transaction) => total + transaction.amount, 0);
 
   return {
     status,
     retry: load,
     greeting: greetingForHour(new Date().getHours()),
-    balance: data?.balance ?? 0,
-    spentThisMonth,
-    incomeThisMonth,
-    budgets: data?.budgets ?? [],
-    recentTransactions: transactions.slice(0, recentTransactionCount),
+    balance: remainingBalance(transactions),
+    spentThisMonth: monthlyExpenses(transactions),
+    incomeThisMonth: monthlyIncome(transactions),
+    spentPercentOfIncome: Math.round(spendingPercentage(transactions) * 100),
+    budgets: (data?.budgets ?? []).map((budget) => ({
+      id: budget.id,
+      categoryLabel: strings.categories[budget.category],
+      spent: spentByCategory(transactions, budget.category),
+      limit: budget.limit,
+    })),
+    recentTransactions: recentTransactions(
+      transactions,
+      recentTransactionCount,
+    ).map((transaction) => ({
+      id: transaction.id,
+      title: transaction.title,
+      categoryLabel: strings.categories[transaction.category],
+      dateLabel: formatDateLabel(transaction.date),
+      amount: signedAmount(transaction),
+    })),
     insight: data?.insight ?? '',
   };
 }

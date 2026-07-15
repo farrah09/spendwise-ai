@@ -18,7 +18,8 @@ export const a11y = {
   },
   home: {
     spentThisMonth: {
-      label: (amount: string) => `Spent this month ${amount}`,
+      label: (amount: string, percent: number) =>
+        `Spent this month ${amount}, ${percent}% of income`,
     },
     incomeThisMonth: {
       label: (amount: string) => `Income this month ${amount}`,

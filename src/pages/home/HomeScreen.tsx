@@ -108,6 +108,7 @@ export function HomeScreen() {
                 accessible
                 accessibilityLabel={a11y.home.spentThisMonth.label(
                   formatSar(dashboard.spentThisMonth),
+                  dashboard.spentPercentOfIncome,
                 )}
                 style={{ gap: theme.spacing.xs }}
               >
@@ -115,6 +116,11 @@ export function HomeScreen() {
                   {strings.home.spentThisMonth}
                 </AppText>
                 <AmountText amount={dashboard.spentThisMonth} />
+                <AppText variant="caption" color="secondary">
+                  {strings.home.percentOfIncome(
+                    dashboard.spentPercentOfIncome,
+                  )}
+                </AppText>
               </View>
             </AppCard>
             <AppCard style={styles.tile}>
@@ -140,7 +146,7 @@ export function HomeScreen() {
             {dashboard.budgets.map((budget) => (
               <BudgetProgressCard
                 key={budget.id}
-                category={budget.category}
+                category={budget.categoryLabel}
                 spent={budget.spent}
                 limit={budget.limit}
               />
@@ -161,7 +167,7 @@ export function HomeScreen() {
               <TransactionListItem
                 key={transaction.id}
                 title={transaction.title}
-                category={transaction.category}
+                category={transaction.categoryLabel}
                 dateLabel={transaction.dateLabel}
                 amount={transaction.amount}
               />
